@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -18,51 +19,61 @@ func main() {
 	fmt.Printf("We have total of %v tickets and %v  are still available.\n", conferenceTickets, remainingTickets) //println - for new line and
 	fmt.Println("Get your tickets here to attend")
 
-	//user
-	var firstName string
-	var lastName string
-	var email string
-	var userTickets uint //userTickets should be positive valuea
-	//var bookings [50]string //array for booking ticket logic
-	var bookings []string //slice for booking //var bookings = []string{} or bookings := []string{}
-	//ask user for their name
-	fmt.Println("Enter your first name:")
-	fmt.Scan(&firstName)
+	//Loops
+	for {
 
-	fmt.Println("Enter your Last name:")
-	fmt.Scan(&lastName)
+		//user
+		var firstName string
+		var lastName string
+		var email string
+		var userTickets uint //userTickets should be positive valuea
+		//var bookings [50]string //array for booking ticket logic
+		var bookings []string //slice for booking //var bookings = []string{} or bookings := []string{}
+		//ask user for their name
+		fmt.Println("Enter your first name:")
+		fmt.Scan(&firstName)
 
-	fmt.Println("Enter your Email address:")
-	fmt.Scan(&email)
+		fmt.Println("Enter your Last name:")
+		fmt.Scan(&lastName)
 
-	fmt.Println("Enter your booked ticktes:")
-	fmt.Scan(&userTickets)
+		fmt.Println("Enter your Email address:")
+		fmt.Scan(&email)
 
-	//Book ticket logic
-	remainingTickets = remainingTickets - userTickets
+		fmt.Println("Enter your booked ticktes:")
+		fmt.Scan(&userTickets)
 
-	//bookings[0] = firstName + " " + lastName //refer booking array
-	bookings = append(bookings, firstName+" "+lastName) //in slice we don't ned index , it just append the next value as its dynamic array //adding value is differ form array in slice but getting or retrieving a value from slide is similar
+		//Book ticket logic
+		remainingTickets = remainingTickets - userTickets
 
-	//this is clear as commnet for now -VideoTime: 1:10
-	// fmt.Printf("The whole slice: %v\n", bookings)
-	// fmt.Printf("The first value: %v\n", bookings[0])
-	// fmt.Printf("slice type: %T\n", bookings)
-	// fmt.Printf("slice length: %v\n", len(bookings))
+		//bookings[0] = firstName + " " + lastName //refer booking array
+		bookings = append(bookings, firstName+" "+lastName) //in slice we don't ned index , it just append the next value as its dynamic array //adding value is differ form array in slice but getting or retrieving a value from slide is similar
 
-	// fmt.Scan(&firstName)    //user input funtion //&variable name -it helps to get input and so user can get desired outpur by giving input
-	//user input funtion //&-pointer help to get input
+		//this is clear as commnet for now -VideoTime: 1:10
+		// fmt.Printf("The whole slice: %v\n", bookings)
+		// fmt.Printf("The first value: %v\n", bookings[0])
+		// fmt.Printf("slice type: %T\n", bookings)
+		// fmt.Printf("slice length: %v\n", len(bookings))
 
-	//RUF
-	// fmt.Println(remainingTickets)
-	// fmt.Println(&remainingTickets) //pointer
+		// fmt.Scan(&firstName)    //user input funtion //&variable name -it helps to get input and so user can get desired outpur by giving input
+		//user input funtion //&-pointer help to get input
 
-	// userName = "Keera"
-	// userTickets = 2
-	// fmt.Printf("User  %v  %v booked %v tickets and his Email addres %v.\n", firstName, lastName, userTickets, email) //%v or fmt placeholder works with fmt.Printf  -IMP*
+		//RUF
+		// fmt.Println(remainingTickets)
+		// fmt.Println(&remainingTickets) //pointer
 
-	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email) //%v or fmt placeholder works withme, us email) //%v or fmt placeholder works with
-	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)                                                                //%v or fmt placeholder worksiningTickets, con) //%v or fmt placeholder works
-	fmt.Printf("These are all bookings: %v\n", bookings)
+		// userName = "Keera"
+		// userTickets = 2
+		// fmt.Printf("User  %v  %v booked %v tickets and his Email addres %v.\n", firstName, lastName, userTickets, email) //%v or fmt placeholder works with fmt.Printf  -IMP*
+
+		fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email) //%v or fmt placeholder works withme, us email) //%v or fmt placeholder works with
+		fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)                                                                //%v or fmt placeholder worksiningTickets, con) //%v or fmt placeholder works
+
+		firstNames := []string{}
+		for _, booking := range bookings {
+			var names = strings.Fields(booking)
+			firstNames = append(firstNames, names[0])
+		}
+		fmt.Printf("These are all bookings: %v\n", firstNames)
+	}
 
 }
