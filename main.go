@@ -20,7 +20,7 @@ func main() {
 	fmt.Println("Get your tickets here to attend")
 
 	//Loops
-	for {
+	for { //we cna defince conditon for- fro loop als,that how much time or long it should be run ,.like for tru-it indicate that loop is always teue anf its infinite loop and also can set another condiotns like remainingTickets && userTickets <= 50
 
 		//user
 		var firstName string
@@ -42,7 +42,14 @@ func main() {
 		fmt.Println("Enter your booked ticktes:")
 		fmt.Scan(&userTickets)
 
-		if userTickets <= remainingTickets {
+		isValidName := len(firstName) >= 2 && len(lastName) >= 2
+
+		isValidEmail := strings.Contains(email, "@") //contains for check email and it will give outpt bool value //its form strings pkg
+
+		isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets //for validTicketNumber.that shoudl be psotive
+
+		//userTickets <= remainingTickets -this commend from below if condition
+		if isValidName && isValidEmail && isValidTicketNumber {
 			//Book ticket logic
 			remainingTickets = remainingTickets - userTickets
 
@@ -85,9 +92,11 @@ func main() {
 				fmt.Println("Our conference is booked out, Come back next year.")
 				break
 			} //now the htingsis when user booking gretaher than avaiable or rmeaning tikctes, the confercne dhad not ended and its givingg randome ref value,so wee need ot fix that by applying conditons  userTcikers > remainingtickets
+		} else {
+			fmt.Println("We apologize, but your ticket request is invalid. Please try again.")
 		}
 
-		fmt.Printf("We only have %v tickets remaining , so you cna't book %v tickets\n", remainingTickets, userTickets)
+		// fmt.Printf("We only have %v tickets remaining , so you cna't book %v tickets\n", remainingTickets, userTickets)
 		//break// But as if now we want to tell customer to book the ticket  again under the avaibl conference ticket
 		//continue //by continue keyword .customer will able to book ticket again uder tha availability of conference tickets
 
