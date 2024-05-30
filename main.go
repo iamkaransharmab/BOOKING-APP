@@ -93,7 +93,17 @@ func main() {
 				break
 			} //now the htingsis when user booking gretaher than avaiable or rmeaning tikctes, the confercne dhad not ended and its givingg randome ref value,so wee need ot fix that by applying conditons  userTcikers > remainingtickets
 		} else {
-			fmt.Println("We apologize, but your ticket request is invalid. Please try again.")
+			if !isValidName {
+				fmt.Println("first name or last name you entered is too short")
+			}
+			if !isValidEmail {
+				fmt.Println("email address you entered doesn't seems correct")
+			}
+			if !isValidTicketNumber {
+				fmt.Println("ticket number you entered is invalid")
+			}
+
+			fmt.Println("We apologize, but your ticket request is invalid. Please try again.") //now we are saying invalid but we can optimise the userInput as invalid and  printhe same input in Output
 		}
 
 		// fmt.Printf("We only have %v tickets remaining , so you cna't book %v tickets\n", remainingTickets, userTickets)
