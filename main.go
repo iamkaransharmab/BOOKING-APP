@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"strings"
+	"strings" //this pkg for strings.Fields()
 )
 
 func main() {
@@ -42,6 +42,12 @@ func main() {
 		fmt.Println("Enter your booked ticktes:")
 		fmt.Scan(&userTickets)
 
+		if userTickets > remainingTickets { //refer Codeline 90
+			fmt.Printf("We only have %v tickets remaining , so you cna't book %v tickets\n", remainingTickets, userTickets)
+			//break// But as if now we want to tell customer to book the ticket  again under the avaibl conference ticket
+			continue //by continue keyword .customer will able to book ticket again uder tha availability of conference tickets
+		}
+
 		//Book ticket logic
 		remainingTickets = remainingTickets - userTickets
 
@@ -68,12 +74,22 @@ func main() {
 		fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email) //%v or fmt placeholder works withme, us email) //%v or fmt placeholder works with
 		fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)                                                                //%v or fmt placeholder worksiningTickets, con) //%v or fmt placeholder works
 
-		firstNames := []string{}
-		for _, booking := range bookings {
-			var names = strings.Fields(booking)
+		//we want just output with user's firstNames
+		firstNames := []string{}           //slice deacalring
+		for _, booking := range bookings { //for array & slices -range provide the index and value for each-element
+			//in Golang, Underscore(_) used to indetify unused variables ,as act as Black Identifier
+			var names = strings.Fields(booking) //strings.Fields()- spilts the string with space as separator
 			firstNames = append(firstNames, names[0])
 		}
 		fmt.Printf("These are all bookings: %v\n", firstNames)
+
+		//now we r gooona implement if-else statement, So we can break for loop,so if remainingTickets go out 0 then it will stop the program wiht if-else condition
+
+		if remainingTickets == 0 {
+			//end program
+			fmt.Println("Our conference is booked out, Come back next year.")
+			break
+		} //now the htingsis when user booking gretaher than avaiable or rmeaning tikctes, the confercne dhad not ended and its givingg randome ref value,so wee need ot fix that by applying conditons  userTcikers > remainingtickets
 	}
 
 }
