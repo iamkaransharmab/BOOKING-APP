@@ -13,6 +13,8 @@ func main() {
 	const conferenceTickets int = 50
 	var remainingTickets uint = 50 //remaining tickets should be positive valuea
 
+	var bookings []string
+
 	fmt.Printf("conferenceTickets is %T, remainingTickets is %T, conconferenceName is %T\n", conferenceTickets, remainingTickets, conferenceName) //%T - placeholder for data type
 
 	//putting this greating code inside the greet function
@@ -25,32 +27,35 @@ func main() {
 	//Loops
 	for { //we cna defince conditon for- fro loop als,that how much time or long it should be run ,.like for tru-it indicate that loop is always teue anf its infinite loop and also can set another condiotns like remainingTickets && userTickets <= 50
 
+		//video time 2:13 hrs - Now will create function for user Input and will call same like validUserInpu function and grretUser and getFirstNames in main function.
+		//now here, we will collect fucntion with values and store in varibles
+
 		//user
-		var firstName string
-		var lastName string
-		var email string
-		var userTickets uint //userTickets should be positive valuea
-		//var bookings [50]string //array for booking ticket logic
-		var bookings []string //slice for booking //var bookings = []string{} or bookings := []string{}
-		//ask user for their name
-		fmt.Println("Enter your first name:")
-		fmt.Scan(&firstName)
+		// var firstName string
+		// var lastName string
+		// var email string
+		// var userTickets uint //userTickets should be positive valuea
+		// //var bookings [50]string //array for booking ticket logic
+		// var bookings []string //slice for booking //var bookings = []string{} or bookings := []string{}
+		// //ask user for their name
+		// fmt.Println("Enter your first name:")
+		// fmt.Scan(&firstName)
 
-		fmt.Println("Enter your Last name:")
-		fmt.Scan(&lastName)
+		// fmt.Println("Enter your Last name:")
+		// fmt.Scan(&lastName)
 
-		fmt.Println("Enter your Email address:")
-		fmt.Scan(&email)
+		// fmt.Println("Enter your Email address:")
+		// fmt.Scan(&email)
 
-		fmt.Println("Enter your booked ticktes:")
-		fmt.Scan(&userTickets)
+		// fmt.Println("Enter your booked ticktes:")
+		// fmt.Scan(&userTickets)
 
 		//decalring its as function :
 		// isValidName := len(firstName) >= 2 && len(lastName) >= 2
 		// isValidEmail := strings.Contains(email, "@") //contains for check email and it will give outpt bool value //its form strings pkg
 		// isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets //for validTicketNumber.that shoudl be psotive
-
-		isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, lastName, email, userTickets, remainingTickets)
+		firstName, lastName, email, userTickets := getUserInput()
+		isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, lastName, email, userTickets, remainingTickets) //this is declare for isValidateUserInput function
 
 		if isValidName && isValidEmail && isValidTicketNumber { ////userTickets <= remainingTickets -this commend from below if condition
 			//Book ticket logic
@@ -148,4 +153,28 @@ func validateUserInput(firstName string, lastName string, email string, userTick
 	isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets //for validTicketNumber.that shoudl be psotive
 
 	return isValidName, isValidEmail, isValidTicketNumber
+}
+
+func getUserInput() (string, string, string, uint) {
+	var firstName string
+	var lastName string
+	var email string
+	var userTickets uint //userTickets should be positive valuea
+	//var bookings [50]string //array for booking ticket logic
+	//var bookings []string //slice for booking //var bookings = []string{} or bookings := []string{}
+	//ask user for their name
+	fmt.Println("Enter your first name:")
+	fmt.Scan(&firstName)
+
+	fmt.Println("Enter your Last name:")
+	fmt.Scan(&lastName)
+
+	fmt.Println("Enter your Email address:")
+	fmt.Scan(&email)
+
+	fmt.Println("Enter your booked ticktes:")
+	fmt.Scan(&userTickets)
+
+	return firstName, lastName, email, userTickets
+
 }
