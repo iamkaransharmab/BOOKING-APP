@@ -15,9 +15,12 @@ func main() {
 
 	fmt.Printf("conferenceTickets is %T, remainingTickets is %T, conconferenceName is %T\n", conferenceTickets, remainingTickets, conferenceName) //%T - placeholder for data type
 
-	fmt.Printf("Welcome to %v booking application\n", conferenceName)                                             //for format output wiht placedholder read - pkg.go.dev/fmt                                             //\n - new line & %v placeholder for formatted ouput and we do subsituues reference value with it                   //println - for new line and fmt is pkg top print output in Golang
-	fmt.Printf("We have total of %v tickets and %v  are still available.\n", conferenceTickets, remainingTickets) //println - for new line and
-	fmt.Println("Get your tickets here to attend")
+	//putting this greating code inside the greet function
+	//fmt.Printf("Welcome to %v booking application\n", conferenceName)        //for format output wiht placedholder read - pkg.go.dev/fmt                                             //\n - new line & %v placeholder for formatted ouput and we do subsituues reference value with it                   //println - for new line and fmt is pkg top print output in Golang
+	//fmt.Printf("We have total of %v tickets and %v  are still available.\n", conferenceTickets, remainingTickets) //println - for new line and
+	//fmt.Println("Get your tickets here to attend")
+
+	greetUser(conferenceName, conferenceTickets, remainingTickets) //we need always pass all the arguemenst that written inside the decaler func
 
 	//Loops
 	for { //we cna defince conditon for- fro loop als,that how much time or long it should be run ,.like for tru-it indicate that loop is always teue anf its infinite loop and also can set another condiotns like remainingTickets && userTickets <= 50
@@ -76,14 +79,17 @@ func main() {
 			fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email) //%v or fmt placeholder works withme, us email) //%v or fmt placeholder works with
 			fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)                                                                //%v or fmt placeholder worksiningTickets, con) //%v or fmt placeholder works
 
-			//we want just output with user's firstNames
-			firstNames := []string{}           //slice deacalring
-			for _, booking := range bookings { //for array & slices -range provide the index and value for each-element
-				//in Golang, Underscore(_) used to indetify unused variables ,as act as Black Identifier
-				var names = strings.Fields(booking) //strings.Fields()- spilts the string with space as separator
-				firstNames = append(firstNames, names[0])
-			}
-			fmt.Printf("These are all bookings: %v\n", firstNames)
+			//we are creating fucntion for print firstNames
+			printFirstNames(bookings)
+
+			// //we want just output with user's firstNames
+			// firstNames := []string{}           //slice deacalring
+			// for _, booking := range bookings { //for array & slices -range provide the index and value for each-element
+			// 	//in Golang, Underscore(_) used to indetify unused variables ,as act as Black Identifier
+			// 	var names = strings.Fields(booking) //strings.Fields()- spilts the string with space as separator
+			// 	firstNames = append(firstNames, names[0])
+			// }
+			// fmt.Printf("The first Names of bookings are: %v\n", firstNames)
 
 			//now we r gooona implement if-else statement, So we can break for loop,so if remainingTickets go out 0 then it will stop the program wiht if-else condition
 
@@ -112,4 +118,24 @@ func main() {
 
 	}
 
+}
+
+//creating function with fucn keyword
+
+func greetUser(confName string, confTickets int, remainingTickets uint) { //function decalre but it can only be excuted after its called,inside the main fucntion
+	//var confName string , so confName is variable that I have declared inside the function
+	fmt.Printf("Welcome to our %v booking application\n", confName)
+	fmt.Printf("We have total of %v tickets and %v  are still available.\n", confTickets, remainingTickets) //println - for new line and
+	fmt.Printf("Get your tickets here to attend\n")
+}
+
+func printFirstNames(bookings []string) {
+	//we want just output with user's firstNames
+	firstNames := []string{}           //slice deacalring
+	for _, booking := range bookings { //for array & slices -range provide the index and value for each-element
+		//in Golang, Underscore(_) used to indetify unused variables ,as act as Black Identifier
+		var names = strings.Fields(booking) //strings.Fields()- spilts the string with space as separator
+		firstNames = append(firstNames, names[0])
+	}
+	fmt.Printf("The first Names of bookings are: %v\n", firstNames)
 }
