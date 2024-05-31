@@ -45,14 +45,14 @@ func main() {
 		fmt.Println("Enter your booked ticktes:")
 		fmt.Scan(&userTickets)
 
-		isValidName := len(firstName) >= 2 && len(lastName) >= 2
+		//decalring its as function :
+		// isValidName := len(firstName) >= 2 && len(lastName) >= 2
+		// isValidEmail := strings.Contains(email, "@") //contains for check email and it will give outpt bool value //its form strings pkg
+		// isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets //for validTicketNumber.that shoudl be psotive
 
-		isValidEmail := strings.Contains(email, "@") //contains for check email and it will give outpt bool value //its form strings pkg
+		isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, lastName, email, userTickets, remainingTickets)
 
-		isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets //for validTicketNumber.that shoudl be psotive
-
-		//userTickets <= remainingTickets -this commend from below if condition
-		if isValidName && isValidEmail && isValidTicketNumber {
+		if isValidName && isValidEmail && isValidTicketNumber { ////userTickets <= remainingTickets -this commend from below if condition
 			//Book ticket logic
 			remainingTickets = remainingTickets - userTickets
 
@@ -80,7 +80,8 @@ func main() {
 			fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)                                                                //%v or fmt placeholder worksiningTickets, con) //%v or fmt placeholder works
 
 			//we are creating fucntion for print firstNames
-			printFirstNames(bookings)
+			firstNames := getFirstNames(bookings) //decaled firstNames as variable ,so can call it directly by main
+			fmt.Printf("The first Names of bookings are: %v\n", firstNames)
 
 			// //we want just output with user's firstNames
 			// firstNames := []string{}           //slice deacalring
@@ -129,7 +130,7 @@ func greetUser(confName string, confTickets int, remainingTickets uint) { //func
 	fmt.Printf("Get your tickets here to attend\n")
 }
 
-func printFirstNames(bookings []string) {
+func getFirstNames(bookings []string) []string {
 	//we want just output with user's firstNames
 	firstNames := []string{}           //slice deacalring
 	for _, booking := range bookings { //for array & slices -range provide the index and value for each-element
@@ -137,5 +138,14 @@ func printFirstNames(bookings []string) {
 		var names = strings.Fields(booking) //strings.Fields()- spilts the string with space as separator
 		firstNames = append(firstNames, names[0])
 	}
-	fmt.Printf("The first Names of bookings are: %v\n", firstNames)
+	//fmt.Printf("The first Names of bookings are: %v\n", firstNames)
+	return firstNames //if we want print firstNames in the Main function ,then we need to sue returnkeyword and also defien the type of return function ,in the beginning
+}
+
+func validateUserInput(firstName string, lastName string, email string, userTickets uint, remainingTickets uint) (bool, bool, bool) { //(bool,boo,bool) written in parenthesis cos od multiple data types values & now need to collect them inside the mainfcuntion ,there the isValidateuserInput func declared andstore in the varibale
+	isValidName := len(firstName) >= 2 && len(lastName) >= 2
+	isValidEmail := strings.Contains(email, "@")                              //contains for check email and it will give outpt bool value //its form strings pkg
+	isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets //for validTicketNumber.that shoudl be psotive
+
+	return isValidName, isValidEmail, isValidTicketNumber
 }
