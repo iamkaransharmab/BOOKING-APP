@@ -1,0 +1,204 @@
+PS D:\GITHUB\BOOKING-APP> git init
+Initialized empty Git repository in D:/GITHUB/BOOKING-APP/.git/
+PS D:\GITHUB\BOOKING-APP> git add README.md
+fatal: pathspec 'README.md' did not match any files
+PS D:\GITHUB\BOOKING-APP> pwd
+
+Path
+----
+D:\GITHUB\BOOKING-APP
+
+
+PS D:\GITHUB\BOOKING-APP> ls
+
+
+    Directory: D:\GITHUB\BOOKING-APP
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         5/29/2024  10:07 AM              0 main.go
+
+
+PS D:\GITHUB\BOOKING-APP> git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        go.mod
+        main.go
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS D:\GITHUB\BOOKING-APP> git commit -m "booking-app with main.go file"
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        go.mod
+        main.go
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS D:\GITHUB\BOOKING-APP> git add .
+warning: in the working copy of 'go.mod', LF will be replaced by CRLF the next time Git touches it
+PS D:\GITHUB\BOOKING-APP> git commit -m "booking-app with main.go file"
+[master (root-commit) 36c00f2] booking-app with main.go file
+ 2 files changed, 12 insertions(+)
+ create mode 100644 go.mod
+ create mode 100644 main.go
+PS D:\GITHUB\BOOKING-APP> git branch
+* master
+PS D:\GITHUB\BOOKING-APP> git remote add origin https://github.com/iamkaransharmab/BOOKING-APP.git
+PS D:\GITHUB\BOOKING-APP> git push -u origin main
+error: src refspec main does not match any
+error: failed to push some refs to 'https://github.com/iamkaransharmab/BOOKING-APP.git'
+PS D:\GITHUB\BOOKING-APP> git push -u origin master
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 363 bytes | 363.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/iamkaransharmab/BOOKING-APP.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+PS D:\GITHUB\BOOKING-APP> 
+
+
+//fetch error RESOLVING -
+
+PS D:\GITHUB\BOOKING-APP> git add .
+PS D:\GITHUB\BOOKING-APP> git commit -m "Day-2"
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+PS D:\GITHUB\BOOKING-APP> git push -u origin master
+Everything up-to-date
+branch 'master' set up to track 'origin/master'.
+PS D:\GITHUB\BOOKING-APP> git add .                
+PS D:\GITHUB\BOOKING-APP> git commit -m "Implemented userTickets > remainingTickets"
+[master db7b292] Implemented userTickets > remainingTickets
+ 1 file changed, 20 insertions(+), 4 deletions(-)
+PS D:\GITHUB\BOOKING-APP> git push -u origin master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 1.01 KiB | 519.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/iamkaransharmab/BOOKING-APP.git
+   65a5b1f..db7b292  master -> master
+branch 'master' set up to track 'origin/master'.
+PS D:\GITHUB\BOOKING-APP> git add .
+PS D:\GITHUB\BOOKING-APP> git commit -m "Added userAttributes & ticket logic under the for loop with if-else conditions"
+[master 9836e34] Added userAttributes & ticket logic under the for loop with if-else conditions
+ 1 file changed, 46 insertions(+), 45 deletions(-)
+PS D:\GITHUB\BOOKING-APP> git push -u origin master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 558 bytes | 558.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/iamkaransharmab/BOOKING-APP.git
+   db7b292..9836e34  master -> master
+branch 'master' set up to track 'origin/master'.
+PS D:\GITHUB\BOOKING-APP> git add .
+PS D:\GITHUB\BOOKING-APP> git commit -m "Implemeted user attributes and tested"                                         
+[master e08577b] Implemeted user attributes and tested
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+PS D:\GITHUB\BOOKING-APP> git push -u origin master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 793 bytes | 793.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/iamkaransharmab/BOOKING-APP.git
+   9836e34..e08577b  master -> master
+branch 'master' set up to track 'origin/master'.
+PS D:\GITHUB\BOOKING-APP> git add .
+PS D:\GITHUB\BOOKING-APP> git commit -m "Implemeted user attributes valid input if conditons"
+[master 96c8c36] Implemeted user attributes valid input if conditons
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+PS D:\GITHUB\BOOKING-APP> git push -u origin master
+PS D:\GITHUB\BOOKING-APP> git push -u origin master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 548 bytes | 548.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/iamkaransharmab/BOOKING-APP.git
+   e08577b..96c8c36  master -> master
+branch 'master' set up to track 'origin/master'.
+PS D:\GITHUB\BOOKING-APP> git add .
+PS D:\GITHUB\BOOKING-APP> git commit -m "Implemented fucntions for greetings & print firstNames of User"
+[master a8261f2] Implemented fucntions for greetings & print firstNames of User
+ 1 file changed, 37 insertions(+), 11 deletions(-)
+PS D:\GITHUB\BOOKING-APP> git push -u origin master
+To https://github.com/iamkaransharmab/BOOKING-APP.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/iamkaransharmab/BOOKING-APP.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+PS D:\GITHUB\BOOKING-APP> git fetch origin
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 5 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (5/5), 1.27 KiB | 9.00 KiB/s, done.
+From https://github.com/iamkaransharmab/BOOKING-APP
+   96c8c36..a7db711  master     -> origin/master
+PS D:\GITHUB\BOOKING-APP> get merge origin/master
+get : The term 'get' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was 
+included, verify that the path is correct and try again.
+At line:1 char:1
++ get merge origin/master
++ ~~~
+    + CategoryInfo          : ObjectNotFound: (get:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS D:\GITHUB\BOOKING-APP> git merge origin/master
+Merge made by the 'ort' strategy.
+ .github/workflows/go.yml | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+ create mode 100644 .github/workflows/go.yml
+PS D:\GITHUB\BOOKING-APP> git add .
+PS D:\GITHUB\BOOKING-APP> git commit -m "Resolve merge conflicts"
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+PS D:\GITHUB\BOOKING-APP> git push origin master
+Enumerating objects: 9, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 1.09 KiB | 1.09 MiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/iamkaransharmab/BOOKING-APP.git
+   a7db711..4ff89e9  master -> master
+PS D:\GITHUB\BOOKING-APP> 
+
+//how to solve fecth error
+1. Fetch the remote changes : git fetch origin   
+2. Merge the remote changes : git merge origin/master
+3. Resolve Merge Conflicts : git add . or git add <resolved_file>
+4. Git commit : git commit -m "Resolve merge conflicts"
+5. git push : git push -u origin branch(master/main)
+
+//Handling Foced Updates : git push --force origin master

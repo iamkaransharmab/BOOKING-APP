@@ -1,0 +1,23 @@
+
+1. First conference
+
+2. Userd details
+
+3. Book Ticket Logic
+
+4. Loops - videotime: 1:11
+
+5. If-Else statement : 1:24 hrs
+
+6. Now check if customer want to book exact ticket as avaibles  VideoTime- 1:37 Hrs
+
+7. Now we need ot check User Input Validation(validName,validEmail) , that userAtrributes value types is matching with user inputs or its crashing the app - VideoTime : 1;40
+
+8. Switch statement videoTime; 1;54 Hrs (creating city case with swtich statement)
+
+9. Function videoTime: 1:59 Hrs(function can define anywhere in code but it should call inside the main fucntion and its reduec the code duplication ,that makes the code clean n undertsandable)- parameters can be passed as arugements in fcuntion
+- frist fucntion -greetUser for confName,ConfTickets,remainingTickets
+-second funciton for firstNames
+
+10. Function created videTime: 2:15 Hrs - created function for getUserInput  and also reolved the booking error : booking: undefined compiler ,::: this is resolved by  decalring : var bookings[]  string 
+chatgpt link : https://chatgpt.com/c/7f43c46d-a332-4230-a295-cb053c8f5483
