@@ -5,15 +5,26 @@ import (
 	"strings" //this pkg for strings.Fields()
 )
 
+// I have decalared all these as pkg to make coide clean  and in pkg level varibales  you can't delcaree with this ;= , we need to decalre with this =  ,only
+var conferenceName string = "Go Conference"
+
+const conferenceTickets int = 50
+
+var remainingTickets uint = 50
+var bookings []string
+
+// bookings := []string{}
+
 func main() {
 
-	var conferenceName string = "Go Conference" //in golang if you declare the var , then you need use it  ELES will get error // := easy syntax can be called as synthetic sugar
-	//fmt.Println(conferenceName)
+	/// we cna declaer all these 4  in pkg to make code cleaner
+	// var conferenceName string = "Go Conference" //in golang if you declare the var , then you need use it  ELES will get error // := easy syntax can be called as synthetic sugar
+	// //fmt.Println(conferenceName)
 
-	const conferenceTickets int = 50
-	var remainingTickets uint = 50 //remaining tickets should be positive valuea
+	// const conferenceTickets int = 50
+	// var remainingTickets uint = 50 //remaining tickets should be positive valuea
 
-	var bookings []string
+	//var bookings []string
 
 	fmt.Printf("conferenceTickets is %T, remainingTickets is %T, conconferenceName is %T\n", conferenceTickets, remainingTickets, conferenceName) //%T - placeholder for data type
 
@@ -59,10 +70,14 @@ func main() {
 
 		if isValidName && isValidEmail && isValidTicketNumber { ////userTickets <= remainingTickets -this commend from below if condition
 			//Book ticket logic
-			remainingTickets = remainingTickets - userTickets
+			///created func bookTicket() for this : , below
+			//Always check argumnets in fucntion and the timedeclaring in main fucntion
+			bookTicket(remainingTickets, userTickets, bookings, firstName, lastName, email, conferenceName)
 
-			//bookings[0] = firstName + " " + lastName //refer booking array
-			bookings = append(bookings, firstName+" "+lastName) //in slice we don't ned index , it just append the next value as its dynamic array //adding value is differ form array in slice but getting or retrieving a value from slide is similar
+			// remainingTickets = remainingTickets - userTickets
+
+			// //bookings[0] = firstName + " " + lastName //refer booking array
+			// bookings = append(bookings, firstName+" "+lastName) //in slice we don't ned index , it just append the next value as its dynamic array //adding value is differ form array in slice but getting or retrieving a value from slide is similar
 
 			//this is clear as commnet for now -VideoTime: 1:10
 			// fmt.Printf("The whole slice: %v\n", bookings)
@@ -81,8 +96,9 @@ func main() {
 			// userTickets = 2
 			// fmt.Printf("User  %v  %v booked %v tickets and his Email addres %v.\n", firstName, lastName, userTickets, email) //%v or fmt placeholder works with fmt.Printf  -IMP*
 
-			fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email) //%v or fmt placeholder works withme, us email) //%v or fmt placeholder works with
-			fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)                                                                //%v or fmt placeholder worksiningTickets, con) //%v or fmt placeholder works
+			///func bookTicket ""
+			// fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email) //%v or fmt placeholder works withme, us email) //%v or fmt placeholder works with
+			// fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)                                                                //%v or fmt placeholder worksiningTickets, con) //%v or fmt placeholder works
 
 			//we are creating fucntion for print firstNames
 			firstNames := getFirstNames(bookings) //decaled firstNames as variable ,so can call it directly by main
@@ -176,5 +192,17 @@ func getUserInput() (string, string, string, uint) {
 	fmt.Scan(&userTickets)
 
 	return firstName, lastName, email, userTickets
+
+}
+
+func bookTicket(remainingTickets uint, userTickets uint, bookings []string, conferenceName string, firstName string, lastName string, email string) {
+	//Book ticket logic
+	remainingTickets = remainingTickets - userTickets
+
+	//bookings[0] = firstName + " " + lastName //refer booking array
+	bookings = append(bookings, firstName+" "+lastName)
+
+	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email) //%v or fmt placeholder works withme, us email) //%v or fmt placeholder works with
+	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)                                                                //%v or fmt placeholder worksiningTickets, con) //%v or fmt placeholder works
 
 }
