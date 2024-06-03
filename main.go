@@ -26,14 +26,17 @@ func main() {
 
 	//var bookings []string
 
-	fmt.Printf("conferenceTickets is %T, remainingTickets is %T, conconferenceName is %T\n", conferenceTickets, remainingTickets, conferenceName) //%T - placeholder for data type
+	greetUser()
+	//cos we ar already definig the varibael in pgk, so we dont need to cdeclare , greetUser() woil;la cces them from pkg easily
+	//greetUser(conferenceName, conferenceTickets, remainingTickets) //we need always pass all the arguemenst that written inside the decaler func
+
+	//?
+	//fmt.Printf("conferenceTickets is %T, remainingTickets is %T, conconferenceName is %T\n", conferenceTickets, remainingTickets, conferenceName) //%T - placeholder for data type
 
 	//putting this greating code inside the greet function
 	//fmt.Printf("Welcome to %v booking application\n", conferenceName)        //for format output wiht placedholder read - pkg.go.dev/fmt                                             //\n - new line & %v placeholder for formatted ouput and we do subsituues reference value with it                   //println - for new line and fmt is pkg top print output in Golang
 	//fmt.Printf("We have total of %v tickets and %v  are still available.\n", conferenceTickets, remainingTickets) //println - for new line and
 	//fmt.Println("Get your tickets here to attend")
-
-	greetUser(conferenceName, conferenceTickets, remainingTickets) //we need always pass all the arguemenst that written inside the decaler func
 
 	//Loops
 	for { //we cna defince conditon for- fro loop als,that how much time or long it should be run ,.like for tru-it indicate that loop is always teue anf its infinite loop and also can set another condiotns like remainingTickets && userTickets <= 50
@@ -66,13 +69,13 @@ func main() {
 		// isValidEmail := strings.Contains(email, "@") //contains for check email and it will give outpt bool value //its form strings pkg
 		// isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets //for validTicketNumber.that shoudl be psotive
 		firstName, lastName, email, userTickets := getUserInput()
-		isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, lastName, email, userTickets, remainingTickets) //this is declare for isValidateUserInput function
+		isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, lastName, email, userTickets) //this is declare for isValidateUserInput function //removed remaingTickets - cos its pkg
 
 		if isValidName && isValidEmail && isValidTicketNumber { ////userTickets <= remainingTickets -this commend from below if condition
 			//Book ticket logic
 			///created func bookTicket() for this : , below
 			//Always check argumnets in fucntion and the timedeclaring in main fucntion
-			bookTicket(remainingTickets, userTickets, bookings, firstName, lastName, email, conferenceName)
+			bookTicket(userTickets, firstName, lastName, email) //removed arguements remainingTickets, remainingTickets,  bookings,,  as its  pkg
 
 			// remainingTickets = remainingTickets - userTickets
 
@@ -101,7 +104,7 @@ func main() {
 			// fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)                                                                //%v or fmt placeholder worksiningTickets, con) //%v or fmt placeholder works
 
 			//we are creating fucntion for print firstNames
-			firstNames := getFirstNames(bookings) //decaled firstNames as variable ,so can call it directly by main
+			firstNames := getFirstNames() //decaled firstNames as variable ,so can call it directly by main //remoeved bookings , as we dony need , booking is pkg array,
 			fmt.Printf("The first Names of bookings are: %v\n", firstNames)
 
 			// //we want just output with user's firstNames
@@ -144,14 +147,14 @@ func main() {
 
 //creating function with fucn keyword
 
-func greetUser(confName string, confTickets int, remainingTickets uint) { //function decalre but it can only be excuted after its called,inside the main fucntion
+func greetUser() { //function decalre but it can only be excuted after its called,inside the main fucntion //removing argument as greetUser cna acces form pkg
 	//var confName string , so confName is variable that I have declared inside the function
-	fmt.Printf("Welcome to our %v booking application\n", confName)
-	fmt.Printf("We have total of %v tickets and %v  are still available.\n", confTickets, remainingTickets) //println - for new line and
+	fmt.Printf("Welcome to our %v booking application\n", conferenceName)
+	fmt.Printf("We have total of %v tickets and %v  are still available.\n", conferenceTickets, remainingTickets) //println - for new line and
 	fmt.Printf("Get your tickets here to attend\n")
 }
 
-func getFirstNames(bookings []string) []string {
+func getFirstNames() []string { //bookings []string removed this from argug,enst ,a sbooking is pkg array
 	//we want just output with user's firstNames
 	firstNames := []string{}           //slice deacalring
 	for _, booking := range bookings { //for array & slices -range provide the index and value for each-element
@@ -163,8 +166,8 @@ func getFirstNames(bookings []string) []string {
 	return firstNames //if we want print firstNames in the Main function ,then we need to sue returnkeyword and also defien the type of return function ,in the beginning
 }
 
-func validateUserInput(firstName string, lastName string, email string, userTickets uint, remainingTickets uint) (bool, bool, bool) { //(bool,boo,bool) written in parenthesis cos od multiple data types values & now need to collect them inside the mainfcuntion ,there the isValidateuserInput func declared andstore in the varibale
-	isValidName := len(firstName) >= 2 && len(lastName) >= 2
+func validateUserInput(firstName string, lastName string, email string, userTickets uint) (bool, bool, bool) { //(bool,boo,bool) written in parenthesis cos od multiple data types values & now need to collect them inside the mainfcuntion ,there the isValidateuserInput func declared andstore in the varibale
+	isValidName := len(firstName) >= 2 && len(lastName) >= 2                  //removed remainingTicktes form argument ,as it splg
 	isValidEmail := strings.Contains(email, "@")                              //contains for check email and it will give outpt bool value //its form strings pkg
 	isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets //for validTicketNumber.that shoudl be psotive
 
@@ -195,7 +198,7 @@ func getUserInput() (string, string, string, uint) {
 
 }
 
-func bookTicket(remainingTickets uint, userTickets uint, bookings []string, conferenceName string, firstName string, lastName string, email string) {
+func bookTicket(userTickets uint, firstName string, lastName string, email string) { //removed as they are .pgk ": remainingTickets uint, conferenceName string,  bookings []string,
 	//Book ticket logic
 	remainingTickets = remainingTickets - userTickets
 
