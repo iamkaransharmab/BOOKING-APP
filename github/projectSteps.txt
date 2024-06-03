@@ -21,3 +21,9 @@
 
 10. Function created videTime: 2:15 Hrs - created function for getUserInput  and also reolved the booking error : booking: undefined compiler ,::: this is resolved by  decalring : var bookings[]  string 
 chatgpt link : https://chatgpt.com/c/7f43c46d-a332-4230-a295-cb053c8f5483
+
+11. Function crated for bookTicket , VdieoTime 2:16hrs
+
+12. delcare conferenceName , remainingTickets , bookings , as .pkg , outside main fucntion
+
+13. Declared helper.go file for separeting function, to make code clean, LIKE now sofare- in helper.go : validUserInput is Declared
