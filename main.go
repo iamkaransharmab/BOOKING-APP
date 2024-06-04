@@ -3,7 +3,6 @@ package main
 import (
 	"booking-app/helper"
 	"fmt"
-	"strconv"
 )
 
 var conferenceName string = "Go Conference"
@@ -11,7 +10,14 @@ var conferenceName string = "Go Conference"
 const conferenceTickets int = 50
 
 var RemainingTickets uint = 50
-var bookings = make([]map[string]string, 0) //list of maps ,with 0 size
+var bookings = make([]userData, 0) //list of maps ,with 0 size //VideoTime 2:58Hrs - changing list of map to list of  userData Ty[pe] {/make([]map[string]string, 0)}
+
+type userData struct { //type keyword create a new type with nae, you specify for anydata type ,In STruct can defiend mix-Data types //struct is lighetweight class ,which doesn't support Inheritance
+	firstName       string
+	lastName        string
+	email           string
+	numberOfTickets uint
+}
 
 func main() {
 
@@ -62,7 +68,7 @@ func getFirstNames() []string {
 	for _, booking := range bookings {
 		//var names = strings.Fields(booking)
 
-		firstNames = append(firstNames, booking["firstName"])
+		firstNames = append(firstNames, booking.firstName) //with STRUCT, it predefined the values ,and asigne dwiht struct.values
 	}
 	return firstNames
 }
@@ -94,14 +100,21 @@ func bookTicket(userTickets uint, firstName string, lastName string, email strin
 
 	//create a map for user
 
-	var userData = make(map[string]string)
-	userData["firstName"] = firstName
-	userData["lastName"] = lastName
-	userData["email"] = email
+	var userData = userData{ // this will userData objects , sowe won't need that userData conversiion(line 111-115)
+		firstName:       firstName,
+		lastName:        lastName,
+		email:           email,
+		numberOfTickets: userTickets,
+	} // make(map[string]string)
 
-	userData["numberOfTickets"] = strconv.FormatUint(uint64(userTickets), 10)
+	// userData["firstName"] = firstName
+	// userData["lastName"] = lastName
+	// userData["email"] = email
+
+	// userData["numberOfTickets"] = strconv.FormatUint(uint64(userTickets), 10)
 
 	bookings = append(bookings, userData) //userData = firstName + " " + lastName
+	fmt.Printf("List of bookings is %v\n", bookings)
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
 	fmt.Printf("%v tickets remaining for %v\n", RemainingTickets, conferenceName)
