@@ -32,7 +32,7 @@ func main() {
 		if isValidName && isValidEmail && isValidTicketNumber {
 
 			bookTicket(userTickets, firstName, lastName, email)
-			sendTicket(userTickets, firstName, lastName, email)
+			go sendTicket(userTickets, firstName, lastName, email) //for concurrecy justy and go keyword in starting
 
 			firstNames := getFirstNames()
 			fmt.Printf("The first Names of bookings are: %v\n", firstNames)
@@ -125,7 +125,7 @@ func bookTicket(userTickets uint, firstName string, lastName string, email strin
 }
 
 func sendTicket(userTickets uint, firstName string, lastName string, email string) {
-	time.Sleep(10 * time.Second)
+	time.Sleep(30 * time.Second)
 	var ticket = fmt.Sprintf("%v tickets for %v %v", userTickets, firstName, lastName) //Sprintf - to prin strings
 	fmt.Println("############")
 	fmt.Printf("Sending ticket :\n %v \n to email address %v\n", ticket, email)
