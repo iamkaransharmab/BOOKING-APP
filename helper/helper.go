@@ -1,4 +1,6 @@
-package helper //if importaing package then give the saem name  as it si defienc it ints own file
+package helper
+
+// package helper //if importaing package then give the saem name  as it si defienc it ints own file
 
 import "strings"
 
